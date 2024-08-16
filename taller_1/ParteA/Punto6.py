@@ -1,20 +1,24 @@
 import math
 
+
 def area_circulo(diametro):
 
     radio = diametro / 2
     return math.pi * (radio * 2)
+
 
 def fuerza_avance(presion, diametro_piston):
 
     area_piston = area_circulo(diametro_piston)
     return presion * area_piston
 
+
 def fuerza_retroceso(presion, diametro_piston, diametro_vastago):
 
     area_piston = area_circulo(diametro_piston)
     area_vastago = area_circulo(diametro_vastago)
     return presion * (area_piston - area_vastago)
+
 
 # Ejemplo
 presion = 700000  # Presión en pascales

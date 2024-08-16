@@ -1,31 +1,41 @@
 import numpy as np
 
+
 def rotacion_x(angulo):
 
-    matriz = np.array([
-        [1, 0, 0],
-        [0, np.cos(angulo), -np.sin(angulo)],
-        [0, np.sin(angulo), np.cos(angulo)]
-    ])
+    matriz = np.array(
+        [
+            [1, 0, 0],
+            [0, np.cos(angulo), -np.sin(angulo)],
+            [0, np.sin(angulo), np.cos(angulo)],
+        ]
+    )
     return matriz
+
 
 def rotacion_y(angulo):
 
-    matriz = np.array([
-        [np.cos(angulo), 0, np.sin(angulo)],
-        [0, 1, 0],
-        [-np.sin(angulo), 0, np.cos(angulo)]
-    ])
+    matriz = np.array(
+        [
+            [np.cos(angulo), 0, np.sin(angulo)],
+            [0, 1, 0],
+            [-np.sin(angulo), 0, np.cos(angulo)],
+        ]
+    )
     return matriz
+
 
 def rotacion_z(angulo):
 
-    matriz = np.array([
-        [np.cos(angulo), -np.sin(angulo), 0],
-        [np.sin(angulo), np.cos(angulo), 0],
-        [0, 0, 1]
-    ])
+    matriz = np.array(
+        [
+            [np.cos(angulo), -np.sin(angulo), 0],
+            [np.sin(angulo), np.cos(angulo), 0],
+            [0, 0, 1],
+        ]
+    )
     return matriz
+
 
 # Ejemplo
 angulo = np.radians(45)

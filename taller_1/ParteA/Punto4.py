@@ -10,9 +10,10 @@ def resistance_pt100(temperature):
         A = 3.9083e-3
         B = -5.775e-7
         C = -4.183e-12  # Utilizado solo para temperaturas < -200°C
-        resistance = R0 * (1 + A * temperature + B * temperature*2)
+        resistance = R0 * (1 + A * temperature + B * temperature * 2)
 
     return resistance
+
 
 # Ejemplo
 temperatura = 50  # Temperatura en °C
