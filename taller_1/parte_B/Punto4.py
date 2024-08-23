@@ -1,5 +1,5 @@
 def mostrar_info_robot(tipo_robot):
- 
+
     if tipo_robot == "1":
         print("Robot Cilíndrico")
         print("Número de Articulaciones: 3")
@@ -22,6 +22,7 @@ def mostrar_info_robot(tipo_robot):
     else:
         print("Opción no válida. Seleccione un número entre 1 y 3.")
 
+
 def main():
     print("Seleccione el tipo de robot:")
     print("1. Robot Cilíndrico")
@@ -32,6 +33,6 @@ def main():
 
     mostrar_info_robot(tipo_robot)
 
-# Ejecutar la función principal
+
 if __name__ == "__main__":
     main()

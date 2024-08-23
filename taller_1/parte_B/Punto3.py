@@ -1,13 +1,16 @@
 import math
 
+
 def volumen_prisma(l, w, h):
 
     return l * w * h
 
+
 def volumen_piramide(l, w, h):
 
     area_base = l * w
-    return (1/3) * area_base * h
+    return (1 / 3) * area_base * h
+
 
 def volumen_cono_truncado(R, r, h):
     """
@@ -17,11 +20,13 @@ def volumen_cono_truncado(R, r, h):
     h (float): Altura del cono truncado.
 
     """
-    return (1/3) * math.pi * h * (R**2 + R * r + r**2)
+    return (1 / 3) * math.pi * h * (R**2 + R * r + r**2)
+
 
 def volumen_cilindro(r, h):
 
     return math.pi * r**2 * h
+
 
 def main():
     print("Seleccione el sólido para calcular el volumen:")
@@ -62,6 +67,6 @@ def main():
     else:
         print("Opción no válida. Seleccione una opción entre 1 y 4.")
 
-# Ejecutar la función principal
+
 if __name__ == "__main__":
     main()
