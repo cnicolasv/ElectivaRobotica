@@ -72,9 +72,9 @@ class Ui_MainWindow(object):
         self.red_button.setText(_translate("MainWindow", "Red Led"))
         self.green_button.setText(_translate("MainWindow", "Green Led"))
         self.names_label.setText(_translate("MainWindow", "Cristian Villamil\n"
-"David Rodriguez\n"
-"Johant Piracoca\n"
-"Laura Valiente"))
+        "David Rodriguez\n"
+        "Johant Piracoca\n"
+        "Laura Valiente"))
 
 
 if __name__ == "__main__":
