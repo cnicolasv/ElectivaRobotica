@@ -9,6 +9,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import gpiod
+import time
+import board
+import busio
+import adafruit_pca9685
 
 
 class Ui_MainWindow(object):
@@ -65,6 +70,56 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        
+        #Configuración de pines
+        RED_LED_PIN = 17
+        GREEN_LED_PIN = 23
+        chip = gpiod.Chip('gpiochip4')
+        self.red_led_line = chip.get_line(RED_LED_PIN)
+        self.red_led_line.request(consumer="RED_LED", type=gpiod.LINE_REQ_DIR_OUT)
+        self.green_led_line = chip.get_line(GREEN_LED_PIN)
+        self.green_led_line.request(consumer="GREEN_LED", type=gpiod.LINE_REQ_DIR_OUT)
+        
+        
+        self.i2c = busio.I2C(board.SCL, board.SDA)
+        self.pca = adafruit_pca9685.PCA9685(self.i2c)
+        self.pca.frequency = 60
+        
+        
+        self.red_button.clicked.connect(self.set_red_led)
+        self.green_button.clicked.connect(self.set_green_led)
+        self.led1_slider.valueChanged.connect(self.trim_led1)
+        self.led2_slider.valueChanged.connect(self.trim_led2)
+        
+        
+        self.red_led = 0
+        self.green_led = 0
+        
+        self.led1 = self.pca.channels[0]
+        self.led2 = self.pca.channels[1]
+        self.brightness_led1 = 0
+        self.brightness_led2 = 0
+        self.led1.duty_cycle = self.brightness_led1
+        self.led2.duty_cycle = self.brightness_led2
+        
+    def set_red_led(self):
+        self.red_led = not self.red_led
+        self.red_led_line.set_value(self.red_led)
+        #if self.red_led == 1:
+            #self.red_button.setStyleSheet("background-color: rgb(255, 0, 0);")
+        
+    def set_green_led(self):
+        self.green_led = not self.green_led
+        self.green_led_line.set_value(self.green_led)
+    
+    def trim_led1(self):
+            self.brightness_led1 = self.led1_slider.value() * 661.96
+            self.led1.duty_cycle = int(self.brightness_led1)
+
+    def trim_led2(self):
+            self.brightness_led2 = self.led2_slider.value() * 661.96
+            self.led2.duty_cycle = int(self.brightness_led2)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
